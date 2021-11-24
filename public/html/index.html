@@ -10,32 +10,18 @@
 
 <body>
     <div class="container">
-        <form id="form" action="/personas" method="post">
-            <label>Personas:</label>
-            <input type="text" name="nuevo" id="nuevo">
+        <form id="form" action="productos">
+            <label>Producto:</label>
+            <input type="text" name="tittle" id="tittle">
+            <label>Precio:</label>
+            <input type="number" name="price" id="price">
+            <label>Imagen:</label>
+            <input type="text" name="thumb" id="thumb">
             <button type="submit">Agregar</button>
         </form>
     </div>
     <script>
-        let data = undefined
-        const form = document.querySelector("#form")
-        form.addEventListener("submit", handleSubmit);
-        const change = document.getElementById("nuevo");
-        change.addEventListener("change", handleChange);
-        function handleChange() {
-            console.log(change.value)
-            data = change.value;
-        }
-        async function handleSubmit(e) {
-            const res = await fetch(this.action, {
 
-                method: this.method,
-                body: data,
-                headers: {
-                    "Content-Type": 'application/json'
-                }
-            });
-        }
     </script>
 </body>
 

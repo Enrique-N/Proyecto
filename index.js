@@ -9,10 +9,23 @@ contenedor.save({ tittle: "Lapiz", price: 15, thumb: "imagen.com/imagen" })
 contenedor.save({ tittle: "Cuaderno", price: 25, thumb: "imagen.com/imagen" })
 contenedor.save({ tittle: "Borrador", price: 5, thumb: "imagen.com/imagen" })
 
+app.use("/", express.static("public/html"))
+app.post("/", (req, res) => {
+    let form = document.getElementById("form")
+    form.addEventListener("submit", handleClick)
+    function handleClick(e) {
+        e.preventDefault()
+        let data = {
+            tittle: e.target.tittle.value,
+            price: e.target.price.value,
+            thumb: e.target.thumb.value
+        }
+    }
+})
+
 app.get("/productos", (req, res) => {
     contenedor.getAll(res);
 })
-
 
 app.get("/productos/:id", (req, res) => {
     let { id } = req.params
