@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <form id="form" action="/personas" method="post">
+            <label>Personas:</label>
+            <input type="text" name="nuevo" id="nuevo">
+            <button type="submit">Agregar</button>
+        </form>
+    </div>
+    <script>
+        let data = undefined
+        const form = document.querySelector("#form")
+        form.addEventListener("submit", handleSubmit);
+        const change = document.getElementById("nuevo");
+        change.addEventListener("change", handleChange);
+        function handleChange() {
+            console.log(change.value)
+            data = change.value;
+        }
+        async function handleSubmit(e) {
+            const res = await fetch(this.action, {
+
+                method: this.method,
+                body: data,
+                headers: {
+                    "Content-Type": 'application/json'
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
